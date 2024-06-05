@@ -11,27 +11,30 @@ class SocialController extends Controller
 {
     public function redirect()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
-    public function googleCallback()
+    public function googleCallback(Request $request)
     {
-        $user = Socialite::driver('google')->user();
-        $avatar = $user->getAvatar();
-    
-        $user = \App\Models\User::where('email', $user->email)->first();
-    
-        if ($user) {
-            Auth::login($user);
-            Session::put('avatar', $avatar);
-            return view('pages.home', [
-                'user' => $user,
-                'avatar' => $avatar,
-            ]);
-        } else {
-            return view('not-found.user-not-found', [
-                'user' => null
-            ]);
+        try {
+            $googleUser = Socialite::driver('google')->stateless()->user();
+            $avatar = $googleUser->getAvatar();
+            $user = \App\Models\User::where('email', $googleUser->email)->first();
+
+            if ($user) {
+                Auth::login($user);
+                Session::put('avatar', $avatar); 
+                return view('pages.home', [
+                    'user' => $user,
+                    'avatar' => $avatar,
+                ]);
+            } else {
+                return view('not-found.user-not-found', [
+                    'user' => null
+                ]);
+            }
+        } catch (\Exception $e) {
+            return redirect('/')->with('error', 'Authentication failed, please try again.');
         }
     }
 }

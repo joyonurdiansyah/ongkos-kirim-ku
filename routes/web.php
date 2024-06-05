@@ -19,3 +19,6 @@ Route::middleware(['web'])->group(function () {
         return view('not-found.user-not-found');
     });
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
