@@ -1,7 +1,7 @@
 # Ongkos Kirimku
 
 <p align="center">
-  <img src="https://i.ibb.co.com/rdBwjr3/ongkos-kirimku.png" width="400" alt="Ongkos Kirimku">
+  <img src="https://i.ibb.co.com/rdBwjr3/ongkos-kirimku.png" width="900" alt="Ongkos Kirimku">
 </p>
 
 ## Fitur
