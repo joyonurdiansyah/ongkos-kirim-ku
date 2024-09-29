@@ -9,9 +9,9 @@
     <script src="{{asset('template/js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{asset('template/vendor/chart.js/Chart.min.js')}}"></script>
+    {{-- <script src="{{asset('template/vendor/chart.js/Chart.min.js')}}"></script> --}}
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script>
+    {{-- <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script> --}}
+    {{-- <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script> --}}
     <script src="https://kit.fontawesome.com/e1f618f385.js" crossorigin="anonymous"></script>

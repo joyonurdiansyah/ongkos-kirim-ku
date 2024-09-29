@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home-page') }}">
         <div class="sidebar-brand-icon">
             <img src="/template/img/joy.png" width="30px" class="mt-2 mb-2" alt="Logo Joyo">
         </div>
@@ -34,9 +34,9 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">
-                    <i class="fas fa-truck mr-2"></i> 
-                    <span>Tracking Barang</span> 
+                <a class="collapse-item" href="{{ url('/cek-ongkir') }}">
+                    <i class="fas fa-truck mr-2"></i>
+                    <span>Tracking Barang</span>
                 </a>
                 <a class="collapse-item" href="register.html">
                     <i class="fas fa-box mr-2"></i>
