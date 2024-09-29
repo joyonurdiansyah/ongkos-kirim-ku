@@ -15,7 +15,7 @@
     <img src="https://laravel.com/img/logotype.min.svg" width="80" alt="Laravel">
   </a>
   <a href="https://github.com/SocialiteProviders/SocialiteProviders" target="_blank">
-    <img src="https://raw.githubusercontent.com/SocialiteProviders/Icons/master/Providers/socialiteproviders.png" width="80" alt="Socialite">
+    <img src="https://i.ibb.co.com/QfWG0Tc/socialite-removebg-preview.png" width="80" alt="Socialite">
   </a>
   <a href="https://jquery.com" target="_blank">
     <img src="https://i.ibb.co.com/FnnjQVX/jquery-removebg-preview.png" width="80" alt="jQuery">
