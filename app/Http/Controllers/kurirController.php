@@ -65,4 +65,13 @@ class kurirController extends Controller
         }
     }
 
+    public function requestPickup(){
+        // comingsoon 
+    }
+
+
+    public function cetakResi(){
+         // comingsoon 
+    }
+
 }
