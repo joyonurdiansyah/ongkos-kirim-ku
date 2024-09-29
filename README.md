@@ -10,7 +10,7 @@
 - **Cetak Resi**: Fitur untuk mencetak bukti pengiriman.
 
 ## Teknologi yang Digunakan
-<p align="center">
+<div style="display: flex; justify-content: center; gap: 10px;">
   <a href="https://laravel.com" target="_blank">
     <img src="https://laravel.com/img/logotype.min.svg" width="80" alt="Laravel">
   </a>
@@ -23,7 +23,7 @@
   <a href="https://getbootstrap.com" target="_blank">
     <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" width="80" alt="Bootstrap">
   </a>
-</p>
+</div>
 
 ## Status Pembangunan
 <p align="center">
