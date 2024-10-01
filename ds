@@ -1,0 +1,114 @@
+[33mcommit 16c6ff2856eca83a37a6c07b81dc08786f92ced1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: df30946 68e70ae
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Tue Oct 1 08:33:15 2024 +0700
+
+    Merge branch 'main' of https://github.com/joyonurdiansyah/ongkos-kirim-ku
+
+[33mcommit df309461c5c38de06c4a724d662e4231e95b7ddc[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Tue Oct 1 08:32:29 2024 +0700
+
+    feature option form seller and see buyer datas
+
+[33mcommit 68e70aed388dc81dcb8f8dfb6fa54fa90a105479[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 09:06:30 2024 +0700
+
+    Update README.md
+
+[33mcommit 1a361f79e9f836d94f75206a157d517172b5eb09[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 09:05:33 2024 +0700
+
+    Update README.md
+
+[33mcommit 4b0a710adf73846373d2bb756ebfa3dee1786b2f[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 09:03:38 2024 +0700
+
+    Update README.md
+
+[33mcommit cc09f218a814081f1852e0ff9b05e56ebad868f5[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 09:01:03 2024 +0700
+
+    Update README.md
+
+[33mcommit 1cf1eed14e9d100906fc9314f32b1e4649040b25[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 09:00:38 2024 +0700
+
+    Update README.md
+
+[33mcommit 8cee0f5b7e2c689e8416ebf9e0c0c810b84b4296[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 08:59:01 2024 +0700
+
+    Update README.md
+
+[33mcommit 1ade3c941229afbb4c9219122bf86527f519bb92[m
+Author: Joyo Nurdiansyah <61000472+joyonurdiansyah@users.noreply.github.com>
+Date:   Sun Sep 29 08:57:29 2024 +0700
+
+    Update README.md
+
+[33mcommit 08a86a8a21e1c51fef52bd3becd89975ac9b691d[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Sun Sep 29 08:56:43 2024 +0700
+
+    update controller
+
+[33mcommit ecc0163f620fa1963c3a6ecc3692479beef247e1[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Sun Sep 29 08:53:17 2024 +0700
+
+    feature cek ongkir v1
+
+[33mcommit fa26e6f6e7dd69cacb7869b1da238112fbfc19ff[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Thu Jun 6 10:08:11 2024 +0700
+
+    update resi
+
+[33mcommit 3ab25dfdd5a80005087ad654a2605173547c28f2[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Thu Jun 6 06:31:59 2024 +0700
+
+    login with data model user
+
+[33mcommit 9bd5d66236bd94f4a69524a6e12cf87edb139749[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Mon Jun 3 09:42:58 2024 +0700
+
+    tambahkan avatar
+
+[33mcommit cac7bc7c1e8f1fd3e8ba16342c23d5a71b34c5c4[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Mon Jun 3 08:50:52 2024 +0700
+
+    tambahkan user
+
+[33mcommit 016229465eb56d4f3f52910e488cf856300eea37[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Mon Jun 3 08:42:02 2024 +0700
+
+    tambahkan auth user di navbar
+
+[33mcommit a483b43b0066d870f49ea3e039c7cc17d1ab3fc6[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Mon Jun 3 08:29:36 2024 +0700
+
+    fix callback
+
+[33mcommit 7c0256bdfbf521086ad2699171b126470e6fdfef[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Mon Jun 3 08:25:23 2024 +0700
+
+    add section login with google
+
+[33mcommit 72e2764e8ca8bc2feaea161ba950e0a26096e5a7[m
+Author: Joyo Nurdiansyah <nurdiansyahjoyo@gmail.com>
+Date:   Thu May 23 20:36:56 2024 +0700
+
+    my first starter view
