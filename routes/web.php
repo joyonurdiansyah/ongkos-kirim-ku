@@ -30,6 +30,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/data-kota', [kurirController::class, 'GetCity'])->name('kurir.getcity');
     Route::post('/cektarif', [kurirController::class, 'cektarif'])->name('kurir.cektarif');
     Route::get('/form-request-pickup', [kurirController::class, 'requestPickup'])->name('kurir.requestPickup');
+    Route::post('/add-seller-data', [kurirController::class, 'addDataSeller'])->name('kurir.addDataSeller');
 
     // Not found
     Route::get('/user-not-found', function () {

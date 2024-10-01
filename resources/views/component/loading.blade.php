@@ -136,6 +136,17 @@
         color: white;
         /* Warna teks */
     }
+
+    #content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures it takes at least full viewport height */
+    }
+
+    #content {
+        flex: 1; /* This allows the content to grow and fill the available space */
+    }
+    
 </style>
 
 <div class="loader" style="display: none">

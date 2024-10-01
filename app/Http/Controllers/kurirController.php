@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Pickup;
+
 class kurirController extends Controller
 {
     public function GetCity(Request $request)
@@ -87,6 +91,51 @@ class kurirController extends Controller
 
     public function requestPickup(){
         return view('pages.request-pickup');
+    }
+
+    public function addDataSeller(Request $request)
+    {
+        // Validasi data
+        $validator = Validator::make($request->all(), [
+            'seller_pickup_name' => 'required|string|max:255',
+            'seller_pickup_date' => 'required|date',
+            'seller_pickup_time' => 'required|date_format:H:i',
+            'seller_address' => 'required|string|max:255',
+            'seller_district' => 'required|string|max:255',
+            'seller_city' => 'required|string|max:255',
+            'seller_vehicle' => 'required|string|max:255',
+            'seller_note' => 'nullable|string',
+            'seller_contact_name' => 'required|string|max:255',
+            'seller_contact_email' => 'required|email|max:255',
+            'seller_contact_phone' => 'required|string|max:15',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ], 422); 
+        }
+
+        $pickup = Pickup::create([
+            'seller_pickup_name' => $request->seller_pickup_name,
+            'seller_pickup_date' => $request->seller_pickup_date,
+            'seller_pickup_time' => $request->seller_pickup_time,
+            'seller_address' => $request->seller_address,
+            'seller_district' => $request->seller_district,
+            'seller_city' => $request->seller_city,
+            'seller_vehicle' => $request->seller_vehicle,
+            'seller_note' => $request->seller_note,
+            'seller_contact_name' => $request->seller_contact_name,
+            'seller_contact_email' => $request->seller_contact_email,
+            'seller_contact_phone' => $request->seller_contact_phone,
+        ]);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Data seller berhasil ditambahkan!',
+            'data' => $pickup,
+        ]);
     }
 
 
