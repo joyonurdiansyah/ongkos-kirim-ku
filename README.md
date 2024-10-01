@@ -3,6 +3,9 @@
 <p align="center">
   <img src="https://i.ibb.co.com/rdBwjr3/ongkos-kirimku.png" width="900" alt="Ongkos Kirimku">
 </p>
+<p align="center">
+  <img src="https://i.ibb.co.com/823n6N2/option-seller-or-buyer.png" width="900" alt="Ongkos Kirimku">
+</p>
 
 ## Fitur
 - **Cek Ongkir**: Fitur untuk menghitung biaya pengiriman.
