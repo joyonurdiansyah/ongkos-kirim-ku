@@ -6,7 +6,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.712);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -114,10 +114,32 @@
             transform: translateX(-350px);
         }
     }
+
+    .select2-container .select2-selection--single {
+        height: 38px;
+        /* Sesuaikan tinggi agar konsisten dengan input lainnya */
+    }
+
+    .select2-selection__rendered {
+        line-height: 36px;
+        /* Sesuaikan agar teks terletak di tengah */
+    }
+
+    .select2-selection__arrow {
+        height: 36px;
+        /* Sesuaikan untuk konsistensi */
+    }
+
+    .bg-purple {
+        background-color: #6f42c1;
+        /* Contoh warna ungu */
+        color: white;
+        /* Warna teks */
+    }
 </style>
 
 <div class="loader" style="display: none">
-    <div class="truckWrapper" >
+    <div class="truckWrapper">
         <div class="truckBody">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 198 93" class="trucksvg">
                 <path stroke-width="3" stroke="#282828" fill="#F83D3D"

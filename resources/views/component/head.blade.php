@@ -12,3 +12,5 @@
 
 <!-- Custom styles for this template-->
 <link href="{{asset('template/css/sb-admin-2.min.css')}}" rel="stylesheet">
+<!-- CSS Select2 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />

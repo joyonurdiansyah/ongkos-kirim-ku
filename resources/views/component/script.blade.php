@@ -15,3 +15,4 @@
     {{-- <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script> --}}
     {{-- <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script> --}}
     <script src="https://kit.fontawesome.com/e1f618f385.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>

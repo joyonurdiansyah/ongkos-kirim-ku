@@ -22,9 +22,18 @@ class kurirController extends Controller
             if ($response->successful()) {
                 $cities = $response->json()['rajaongkir']['results'];
 
-                return response()->json(['cities' => $cities]);
+                $kotaDuplicate = [];
+                foreach ($cities as $city) {
+                    $cityNameLower = strtolower($city['city_name']);
+                    if (!isset($kotaDuplicate[$cityNameLower])) {
+                        $kotaDuplicate[$cityNameLower] = $city; 
+                    }
+                }
+                $kotaDuplicate = array_values($kotaDuplicate);
+
+                return response()->json(['cities' => $kotaDuplicate]);
             } else {
-                return response()->json(['error' => 'gagal mendapatkan data kota'], $response->status());
+                return response()->json(['error' => 'Gagal mendapatkan data kota'], $response->status());
             }
         } catch (\Exception $e) {
             return response()->json(['error' => 'Exception occurred: ' . $e->getMessage()], 500);
@@ -46,27 +55,38 @@ class kurirController extends Controller
         $tujuan = $request->input('tujuan');
         $berat = $request->input('berat');
 
-        try {
-            $response = Http::withHeaders(['key' => $apiKey])->post('https://api.rajaongkir.com/starter/cost', [
-                'origin' => $asal,
-                'destination' => $tujuan,
-                'weight' => $berat,
-                'courier' => 'jne' 
-            ]);
+        $couriers = ['jne', 'tiki', 'pos'];
 
-            if ($response->successful()) {
-                $costData = $response->json()['rajaongkir']['results'];
-                return response()->json(['success' => true, 'data' => $costData]);
-            } else {
-                return response()->json(['success' => false, 'message' => 'Gagal mendapatkan tarif'], $response->status());
+        $costs = [];
+
+        try {
+            foreach ($couriers as $courier) {
+                $response = Http::withHeaders(['key' => $apiKey])->post('https://api.rajaongkir.com/starter/cost', [
+                    'origin' => $asal,
+                    'destination' => $tujuan,
+                    'weight' => $berat,
+                    'courier' => $courier
+                ]);
+    
+                if ($response->successful()) {
+                    $costData = $response->json()['rajaongkir']['results'];
+                    $costs[] = [
+                        'courier' => $courier,
+                        'costs' => $costData
+                    ]; 
+                } else {
+                    return response()->json(['success' => false, 'message' => 'Gagal mendapatkan tarif untuk kurir ' . $courier], $response->status());
+                }
             }
+    
+            return response()->json(['success' => true, 'data' => $costs]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Exception occurred: ' . $e->getMessage()], 500);
         }
     }
 
     public function requestPickup(){
-        // comingsoon 
+        return view('pages.request-pickup');
     }
 
 

@@ -40,38 +40,34 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" class="form-control bg-purple mb-2"
-                                                placeholder="Asal Pengiriman" readonly>
-                                            <select class="form-control" id="asalPengiriman">
-                                                <option></option>
+                                            <input type="text" class="form-control bg-purple mb-2" placeholder="Asal Pengiriman" readonly>
+                                            <select id="asalPengiriman" class="form-select select2 mb-2" style="width: 100%;">
+                                                <option value="">Pilih Kota Asal</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <input type="text" class="form-control bg-purple mb-2"
-                                                placeholder="Tujuan Pengiriman" readonly>
-                                            <select class="form-control" id="tujuanPengiriman">
-                                                <option></option>
+                                            <input type="text" class="form-control bg-purple mb-2" placeholder="Tujuan Pengiriman" readonly>
+                                            <select id="tujuanPengiriman" class="form-select select2 mb-2" style="width: 100%;">
+                                                <option value="">Pilih Kota Tujuan</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input type="text" class="form-control bg-purple mb-2"
-                                                placeholder="Berat/Kg" readonly>
+                                            <input type="text" class="form-control bg-purple mb-2" placeholder="Berat/Kg" readonly>
                                             <input type="number" class="form-control" id="berat" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input type="text" class="form-control bg-purple mb-2"
-                                                placeholder="Cek Tarif" readonly>
-                                            <button id="cekTarif" class="btn btn-primary form-control">Cek
-                                                Tarif</button>
+                                            <input type="text" class="form-control bg-purple mb-2" placeholder="Cek Tarif" readonly>
+                                            <button id="cekTarif" class="btn btn-primary form-control">Cek Tarif</button>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div id="hasilPencarian" class="mt-4">
                                     <!-- Hasil pencarian akan ditampilkan di sini -->
                                 </div>
@@ -143,7 +139,24 @@
         {{-- script page --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
+
+            $('.loader').show();
+
+            setTimeout(function() {
+                $('.loader').fadeOut('slow'); 
+            }, 3000);
+
+
             $(document).ready(function() {
+                $('.select2').select2({
+                    placeholder: 'Pilih Kota',
+                    allowClear: true
+                });
+
+                // Memuat kota pada dropdown
+                fetchCities($('#asalPengiriman'));
+                fetchCities($('#tujuanPengiriman'));
+
                 function fetchCities(selectElement) {
                     $.ajax({
                         url: '/data-kota',
@@ -156,6 +169,8 @@
                                     selectElement.append('<option value="' + city.city_id + '">' +
                                         city.city_name + '</option>');
                                 });
+
+                                selectElement.select2();
                             }
                         },
                         error: function(xhr, status, error) {
@@ -197,12 +212,14 @@
                                 $('#cekTarifResult').empty();
         
                                 // Loop through each courier
-                                $.each(response.data, function(index, courier) {
-                                    const courierName = courier.name;
-                                    $.each(courier.costs, function(costIndex, cost) {
-                                        const service = cost.service;
-                                        const etd = cost.cost[0].etd; 
-                                        const value = cost.cost[0].value.toLocaleString(); 
+                                $.each(response.data, function(index, courierData) {
+                                    const courierName = courierData.courier;
+                                    const costs = courierData.costs[0].costs;
+
+                                    $.each(costs, function(costIndex, costDetail) {
+                                        const service = costDetail.service;
+                                        const etd = costDetail.cost[0].etd; 
+                                        const value = costDetail.cost[0].value.toLocaleString(); 
                                         const newRow = `
                                             <div class="d-flex align-items-center my-2">
                                                 <div class="me-3">
@@ -242,10 +259,7 @@
                     $('#service').val($(this).data('service'));
                     $('#cektarifmodal').modal('show');
                 });
-        
-                // Memuat kota pada dropdown
-                fetchCities($('#asalPengiriman'));
-                fetchCities($('#tujuanPengiriman'));
+    
         
                 $('#cekTarif').on('click', function() {
                     cekTarif();

@@ -38,7 +38,7 @@
                     <i class="fas fa-truck mr-2"></i>
                     <span>Tracking Barang</span>
                 </a>
-                <a class="collapse-item" href="register.html">
+                <a class="collapse-item" href="{{url('/form-request-pickup')}}">
                     <i class="fas fa-box mr-2"></i>
                     <span>Request Pickup</span>
                 </a>
