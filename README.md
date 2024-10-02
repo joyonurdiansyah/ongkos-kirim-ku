@@ -1,7 +1,18 @@
 # Ongkos Kirimku
 
+<h1>1. Home menu</h1>
 <p align="center">
   <img src="https://i.ibb.co.com/rdBwjr3/ongkos-kirimku.png" width="900" alt="Ongkos Kirimku">
+</p>
+
+<h1>2. courier services</h1>
+<p align="center">
+  <img src="https://i.ibb.co.com/yRFYzFG/hasil-cek-tarif.png" width="900" alt="Ongkos Kirimku">
+</p>
+
+<h1>3. menu pickup</h1>
+<p align="center">
+  <img src="https://i.ibb.co.com/823n6N2/option-seller-or-buyer.png" width="900" alt="Ongkos Kirimku">
 </p>
 
 ## Fitur
