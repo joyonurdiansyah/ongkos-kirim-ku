@@ -30,7 +30,7 @@ class kurirController extends Controller
                 foreach ($cities as $city) {
                     $cityNameLower = strtolower($city['city_name']);
                     if (!isset($kotaDuplicate[$cityNameLower])) {
-                        $kotaDuplicate[$cityNameLower] = $city; 
+                        $kotaDuplicate[$cityNameLower] = $city;
                     }
                 }
                 $kotaDuplicate = array_values($kotaDuplicate);
@@ -71,26 +71,50 @@ class kurirController extends Controller
                     'weight' => $berat,
                     'courier' => $courier
                 ]);
-    
+
                 if ($response->successful()) {
                     $costData = $response->json()['rajaongkir']['results'];
                     $costs[] = [
                         'courier' => $courier,
                         'costs' => $costData
-                    ]; 
+                    ];
                 } else {
                     return response()->json(['success' => false, 'message' => 'Gagal mendapatkan tarif untuk kurir ' . $courier], $response->status());
                 }
             }
-    
+
             return response()->json(['success' => true, 'data' => $costs]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Exception occurred: ' . $e->getMessage()], 500);
         }
     }
 
-    public function requestPickup(){
+    public function requestPickup()
+    {
         return view('pages.request-pickup');
+    }
+
+
+    public function getPickupData()
+    {
+        // Ambil hanya kolom yang diperlukan
+        $data = Pickup::select([
+            'id',
+            'seller_pickup_name',
+            'seller_pickup_date',
+            'seller_pickup_time',
+            'seller_address',
+            'seller_district',
+            'seller_city',
+            'seller_vehicle',
+            'seller_note',
+            'seller_contact_name',
+            'seller_contact_email',
+            'seller_contact_phone',
+            'buyer_name'
+        ])->get();
+
+        return response()->json(['data' => $data]);
     }
 
     public function addDataSeller(Request $request)
@@ -114,7 +138,7 @@ class kurirController extends Controller
             return response()->json([
                 'success' => false,
                 'errors' => $validator->errors(),
-            ], 422); 
+            ], 422);
         }
 
         $pickup = Pickup::create([
@@ -130,7 +154,7 @@ class kurirController extends Controller
             'seller_contact_email' => $request->seller_contact_email,
             'seller_contact_phone' => $request->seller_contact_phone,
         ]);
-        
+
         return response()->json([
             'success' => true,
             'message' => 'Data seller berhasil ditambahkan!',
@@ -138,9 +162,42 @@ class kurirController extends Controller
         ]);
     }
 
+    public function getdataPembeli($id)
+    {
+        $buyerData = Pickup::find($id);
 
-    public function cetakResi(){
-         // comingsoon 
+        if (!$buyerData) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+
+        return response()->json($buyerData);
+    }
+
+    public function tambahDataPembeli(Request $request, $id)
+    {
+        // Validasi data jika diperlukan
+        $request->validate([
+            'buyer_name' => 'required|string|max:255',
+            'buyer_pickup_date' => 'required|date',
+            'buyer_pickup_time' => 'required',
+            'buyer_address' => 'required|string|max:255',
+            'buyer_contact_phone' => 'required|string|max:20',
+        ]);
+
+        $buyer = Pickup::find($id); 
+        if ($buyer) {
+            $buyer->update($request->all());
+        } else {
+            Pickup::create($request->all());
+        }
+
+        return response()->json(['message' => 'Data pembeli berhasil disimpan']);
+    }
+
+
+    public function cetakResi()
+    {
+        // comingsoon 
     }
 
 }

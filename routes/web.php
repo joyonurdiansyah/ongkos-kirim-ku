@@ -30,6 +30,9 @@ Route::middleware(['web'])->group(function () {
     Route::get('/data-kota', [kurirController::class, 'GetCity'])->name('kurir.getcity');
     Route::post('/cektarif', [kurirController::class, 'cektarif'])->name('kurir.cektarif');
     Route::get('/form-request-pickup', [kurirController::class, 'requestPickup'])->name('kurir.requestPickup');
+    Route::get('/pickup-data', [kurirController::class, 'getPickupData'])->name('kurir.getPickupData');
+    Route::get('/pickup-data-pembeli/{id}', [kurirController::class, 'getdataPembeli'])->name('kurir.getdataPembeli');
+    Route::post('/tambah-data-pembeli/{id}', [kurirController::class, 'tambahDataPembeli'])->name('kurir.tambahDataPembeli');
     Route::post('/add-seller-data', [kurirController::class, 'addDataSeller'])->name('kurir.addDataSeller');
 
     // Not found

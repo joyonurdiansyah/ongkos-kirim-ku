@@ -14,6 +14,8 @@
     <!-- Page level custom scripts -->
     {{-- <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script> --}}
     {{-- <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script> --}}
-    <script src="https://kit.fontawesome.com/e1f618f385.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/{{ env('FONT_AWESOME_KEY') }}.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+     <!-- Load DataTables JS -->
+     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
