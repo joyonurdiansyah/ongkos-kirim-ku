@@ -9,6 +9,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use App\Models\User;
+use PDF; 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Pickup;
 
@@ -178,6 +179,7 @@ class kurirController extends Controller
         // Validasi data jika diperlukan
         $request->validate([
             'buyer_name' => 'required|string|max:255',
+            'buyer_city' => 'required|string|max:125',
             'buyer_pickup_date' => 'required|date',
             'buyer_pickup_time' => 'required',
             'buyer_address' => 'required|string|max:255',
@@ -194,10 +196,14 @@ class kurirController extends Controller
         return response()->json(['message' => 'Data pembeli berhasil disimpan']);
     }
 
-
-    public function cetakResi()
+    public function generatePDF($id)
     {
-        // comingsoon 
+
+        $pengiriman = Pickup::findOrFail($id);
+
+        $pdf = PDF::loadView('pages.pengiriman_pdf', compact('pengiriman'));
+
+        return $pdf->stream('pengiriman-'.$pengiriman->id.'.pdf');
     }
 
 }

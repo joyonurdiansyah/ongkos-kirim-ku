@@ -168,14 +168,14 @@
                             <div class="col-lg-12 col-md-12">
                                 <button type="button" class="btn btn-outline-primary mb-2"
                                     id="backtoMenu">Kembali</button>
-                                <div class="d-flex justify-content-end mb-3">
+                                {{-- <div class="d-flex justify-content-end mb-3">
                                     <button type="button" class="btn btn-success me-2" id="menuPrintPDF">
                                         <i class="fas fa-file-pdf me-1"></i> Print to PDF
                                     </button>
                                     <button type="button" class="btn btn-danger ml-4" id="menuPrintExcel">
                                         <i class="fas fa-file-excel me-1"></i> Print to Excel
                                     </button>
-                                </div>
+                                </div> --}}
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">List Data Pengiriman</h6>
@@ -277,8 +277,12 @@
                         <input type="time" class="form-control" id="buyer_pickup_time" name="buyer_pickup_time">
                     </div>
                     <div class="mb-3">
-                        <label for="buyer_address" class="form-label"><strong>Alamat:</strong></label>
+                        <label for="buyer_address" class="form-label"><strong>Alamat Penerima:</strong></label>
                         <input type="text" class="form-control" id="buyer_address" name="buyer_address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="buyer_city" class="form-label"><strong>Kota Penerima:</strong></label>
+                        <input type="text" class="form-control" id="buyer_city" name="buyer_city">
                     </div>
                     <!-- Other form fields remain the same -->
                     <div class="mb-3">
@@ -345,10 +349,8 @@
                             icon: "success",
                             button: "OK",
                         }).then(() => {
-                            // Reset form setelah sukses submit
                             $('form')[0].reset();
 
-                            // Menambahkan data baru langsung ke dalam table tanpa reload
                             var newRow = `<tr>
                                 <td>${response.data.seller_pickup_name}</td>
                                 <td>${response.data.seller_pickup_date}</td>
@@ -439,11 +441,25 @@
                         data: 'null',
                         render: function(data, type, row) {
                             let buttonClass = row.buyer_name ? 'btn-success' : 'btn-primary';
-                            let iconClass = row.buyer_name ? 'fa-check' : 'fa-eye'; 
-                            return `<button class="btn ${buttonClass} view-button" data-id="${row.id}">
-                                    <i class="fa ${iconClass}"></i></button>`;
+                            let iconClass = row.buyer_name ? 'fa-check' : 'fa-eye';
+
+                            // Create a container with Bootstrap's grid classes
+                            let buttons = `<div class="d-flex flex-column align-items-start"> 
+                            <button class="btn ${buttonClass} view-button mb-2" data-id="${row.id}">
+                                <i class="fa ${iconClass}"></i>
+                            </button>
+                            <button class="btn btn-danger pdf-button" 
+                                onclick="window.location.href='/pdf/${row.id}'">
+                                <i class="fa fa-file-pdf"></i>
+                            </button>
+                        </div>`;
+
+                            return buttons;
                         }
                     }
+
+
+
                 ]
             });
 
@@ -482,6 +498,7 @@
                     buyer_pickup_date: $('#buyer_pickup_date').val(),
                     buyer_pickup_time: $('#buyer_pickup_time').val(),
                     buyer_address: $('#buyer_address').val(),
+                    buyer_city: $('#buyer_city').val(),
                     buyer_contact_phone: $('#buyer_contact_phone').val(),
                 };
 
@@ -508,6 +525,7 @@
                         }).then(() => {
                             $('#buyerDetailsModal').modal('hide');
                             $('#buyerDetailsModal input').val('');
+                            window.location.reload();
                         });
                     },
                     error: function(xhr, status, error) {
@@ -524,10 +542,7 @@
         });
     </script>
 
-
-
     @include('component.script')
-    {{-- end script --}}
 </body>
 
 </html>

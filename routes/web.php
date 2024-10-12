@@ -34,6 +34,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/pickup-data-pembeli/{id}', [kurirController::class, 'getdataPembeli'])->name('kurir.getdataPembeli');
     Route::post('/tambah-data-pembeli/{id}', [kurirController::class, 'tambahDataPembeli'])->name('kurir.tambahDataPembeli');
     Route::post('/add-seller-data', [kurirController::class, 'addDataSeller'])->name('kurir.addDataSeller');
+    Route::get('/pdf/{id}', [kurirController::class, 'generatePDF'])->name('generatePDF');
 
     // Not found
     Route::get('/user-not-found', function () {
